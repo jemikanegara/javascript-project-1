@@ -98,6 +98,15 @@ output () // call the output for the initial page load
 
 function register (event) {
     event.preventDefault()
+    if( 
+        people.filter (
+            element => {
+                return element.name === nameInput.value
+            }
+        )
+    ) {
+        alert('your name already registered')
+    } else
     if (nameInput.value !== "" && addressInput.value !== "" && emailInput.value !== "" && phoneInput.value !== "") {
     table.innerHTML = ""
 
@@ -111,7 +120,7 @@ function register (event) {
     people.push(newPerson) // add new citizen to the array of people
     output() // show new output after new citizen successfully added
 
-    } else {
+    } else  {
     alert('please complete all the field') // alert if there is any input unfulfilled
     }
 }
