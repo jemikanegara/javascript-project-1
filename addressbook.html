@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Address Book</title>
+    <link rel='stylesheet' type='text/css' href="addressbook.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Address Book Bikini Bottom</h1>
+        <div class="desc">Register yourself today</div>
+    </header>
+    <div class="addressbook">
+        <div class="input">
+            <form>
+            <input type="text" id="nameInput" placeholder="your name">
+            <input type="text" id="addressInput" placeholder="your address">
+            <input type="text" id="emailInput" placeholder="your email">
+            <input type="text" id="phoneInput" placeholder="your phone">
+            <input type="submit">
+            </form>
+            <div clas="error"></div>
+        </div>
+        <div class="output">
+            <table id="table">
+                <thead>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Email</td>
+                    <td>Phone</td>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+    <script>
+// Registered Citizen       
+people = [{
+            name : 'patrick',
+            address : 'under a stone',
+            email : 'patrickstar@bikinibottom.com',
+            phone : '081-090-090-090'
+        }, 
+        {
+            name : 'sandy',
+            address : 'under a tree',
+            email : 'sandycheek@bikinibottom.com',
+            phone : '087-080-080-080'
+        },
+        {
+            name : 'spongebob',
+            address : 'in the pineapple house',
+            email : 'spongebob@bikinibottom.com',
+            phone : '089-209-209-209'
+        },
+        {
+            name : 'mrcrab',
+            address : 'krusty crab street',
+            email : 'mrcrab@bikinibottom.com',
+            phone : '082-080-909-900'
+        }]
+
+// Element
+nameInput = document.getElementById('nameInput')
+addressInput = document.getElementById('addressInput')
+emailInput = document.getElementById('emailInput')
+phoneInput = document.getElementById('phoneInput')
+submitButton = document.querySelector("input[type='submit']")
+error = document.getElementById('error')
+table = document.getElementById('table')
+
+// Event Listener
+submitButton.addEventListener('click', register)
+
+// Function
+
+function register (event) {
+    event.preventDefault()
+    if (nameInput.value !== "" && addressInput.value !== "" && emailInput.value !== "" && phoneInput.value !== "") {
+        table.innerHTML = ""
+
+        let newPerson = {
+        name : nameInput.value,
+        address : addressInput.value,
+        email : emailInput.value,
+        phone : phoneInput.value
+        }
+
+        console.log(newPerson)
+        people.push(newPerson)
+        console.log(people)
+        
+        people.forEach(element => {
+            // var trName = document.createElement('tr')
+            // var trAddress = document.createElement('tr')
+            // var trEmail = document.createElement('tr')
+            // var trPhone = document.createElement('tr')
+
+            var tr = document.createElement('tr')
+
+            var tdName = document.createElement('td')
+            var tdAddress = document.createElement('td')
+            var tdEmail = document.createElement('td')
+            var tdPhone = document.createElement('td')
+
+            var createName = document.createTextNode(element.name)
+            var createAddress = document.createTextNode(element.address)
+            var createEmail = document.createTextNode (element.email)
+            var createPhone = document.createTextNode(element.phone)
+
+            tdName.appendChild(createName)
+            tdAddress.appendChild(createAddress)
+            tdEmail.appendChild(createEmail)
+            tdPhone.appendChild(createPhone)
+            
+            tr.appendChild(tdName)
+            tr.appendChild(tdAddress)
+            tr.appendChild(tdEmail)
+            tr.appendChild(tdPhone)
+
+            table.appendChild(tr)
+            console.log(table)
+        });
+
+        
+
+    // for (i = 0; i < people.length; i++) {
+    //     var td = document.createElement('td')
+    //     createName = document.createTextNode(people[i].name)
+    //     td.appendChild(createName)
+    //     tr.appendChild(td)
+    //     console.log(tr)
+        // peopleName = `<td> ${people[i].name} </td>`
+        // peopleAddress = `<td> ${people[i].address} </td>`
+        // peopleEmail = `<td> ${people[i].email} </td>`
+        // peoplePhone = `<td> ${people[i].phone} </td>`
+        
+        // var test = table.innerHTML = `${peopleName}${peopleAddress}${peopleEmail}${peoplePhone}`
+        
+        // for (j = 0; j < people[i].length; j++){
+        //     var td = document.createElement("td");                 
+        //     var person = document.createTextNode(people[i][j]);         
+        //     td.appendChild(person);                       
+        //     var tr = document.createElement("tr")      
+        //     tr.appendChild(tr);
+        //     table.appendChild(td);
+        //     console.log(table)
+        // }
+
+        // td.appendChild(document.createTextNode(people[i].name))
+        // tr.appendChild(td)
+        // table.appendChild(tr)
+        // td.appendChild(document.createTextNode(people[i].address))
+        // tr.appendChild(td)
+        // table.appendChild(tr)
+        // td.appendChild(document.createTextNode(people[i].email))
+        // tr.appendChild(td)
+        // table.appendChild(tr)
+        // td.appendChild(document.createTextNode(people[i].phone))
+        // tr.appendChild(td)
+        // table.appendChild(tr)
+
+
+        // console.log(createAddress)
+        // tr.appendChild(createName)
+        // tr.appendChild(createAddress)
+        // tr.appendChild(createEmail)
+        // tr.appendChild(createPhone)
+        
+        
+    // }    
+
+    } else {
+        alert('plese complete all the field')
+        console.log('error')
+    }
+}
+
+
+
+// search = prompt('search name')
+
+// result = people.filter(
+//     person => person === search
+// )
+
+// result.forEach(
+//     element => {
+//         console.log('search result : '+element)
+//     }
+// )
+
+// if (search != null) {
+
+// } else
+// if (result != search) {
+//     console.log('search result not found')
+// } 
+
+    </script>
+</body>
+</html>

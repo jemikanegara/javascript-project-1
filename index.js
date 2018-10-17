@@ -262,14 +262,46 @@ timeCalculator(date)
 // level 24 Adress Book
 console.log('----------- Level 24 Adress Book ----------------')
 
-name = prompt('input your name')
-people = ['patrick', 'sandy', 'squidward']
+nameInput = prompt('input your name')
+addressInput = prompt('input your adress')
+emailInput = prompt('input your email')
+phoneInput = prompt('input your phone number')
 
-if (name != null) {
-    people.push(name)
+let newPerson = {
+    name : nameInput,
+    address : addressInput,
+    email : emailInput,
+    phone : phoneInput
 }
 
-console.log(`people list : ${people}`)
+people = [{
+            name : 'patrick',
+            address : 'under a stone',
+            email : 'patrickstar@bikinibottom.com',
+            phone : '081-090-090-090'
+        }, 
+        {
+            name : 'sandy',
+            address : 'under a tree',
+            email : 'sandycheek@bikinibottom.com',
+            phone : '087-080-080-080'
+        },
+        {
+            name : 'spongebob',
+            address : 'in the pineapple house',
+            email : 'spongebob@bikinibottom.com',
+            phone : '089-209-209-209'
+        },
+        {
+            name : 'mrcrab',
+            address : 'krusty crab street',
+            email : 'mrcrab@bikinibottom.com',
+            phone : '082-080-909-900'
+        }]
+
+if (nameInput != null && addressInput != null && emailInput != null && phoneInput != null) {
+    people.push(newPerson)
+}
 
 search = prompt('search name')
 
@@ -283,6 +315,9 @@ result.forEach(
     }
 )
 
+if (search != null) {
+
+} else
 if (result != search) {
     console.log('search result not found')
-}
+} 
