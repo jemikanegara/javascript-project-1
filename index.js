@@ -1,9 +1,11 @@
 // level 0 declare variable
+console.log('----------- Level 0 ----------------')
 var numberA = 10;
 let numberB = 20;
 const numberC = 0.30;
 
 // level 1 math operator
+console.log('----------- Level 1 ----------------')
 console.log(numberA + numberB)
 console.log(numberA - numberB)
 console.log(numberA * numberB)
@@ -11,6 +13,7 @@ console.log(numberA / numberB)
 console.log(numberA % numberB)
 
 // level 2 string, boolean, negative number
+console.log('----------- Level 2 ----------------')
 let string = 'string'
 let booleanTrue = true
 let numberNegative = -1
@@ -19,6 +22,7 @@ console.log(string + booleanTrue) // return 'stringtrue'
 console.log(string + numberNegative) // return 'string-1'
 
 // level 3 combine, push, pop
+console.log('----------- Level 3 ----------------')
 let arrayNeg = [-1, -2, -3, -4]
 let arrayPos = [1, 2, 3, 4]
 let arrayZer = [0]
@@ -39,6 +43,7 @@ arrayPos.forEach(
 )
 
 // level 4 declare string var
+console.log('----------- Level 4 ----------------')
 const sentenceA = "Hello world!";
 const sentenceB = "Good bye!";
 
@@ -46,6 +51,7 @@ console.log(sentenceA); // return Hello world
 console.log(sentenceB); // return Good bye
 
 // level 5 Conc & Interpolate
+console.log('----------- Level 5 ----------------')
 const sentenceC = sentenceA + " " + sentenceB;
 const sentenceD = `${sentenceA} ${sentenceB}`;
 
@@ -53,6 +59,7 @@ console.log(sentenceC) // return Hello world Good bye
 console.log(sentenceD) // return Hello world Good bye
 
 // level 6 Upper & lowercase
+console.log('----------- Level 6 ----------------')
 const sentenceE = sentenceA.toUpperCase()
 console.log(sentenceE) // return HELLO WORLD
 
@@ -60,6 +67,7 @@ const sentenceF = sentenceB.toLowerCase()
 console.log(sentenceF) // return good bye
 
 // level 7 Title Case
+console.log('----------- Level 7 ----------------')
 let helloBoss = 'hello BIg Boss'
 console.log(helloBoss) // return hello BIg Boss
 
@@ -83,6 +91,7 @@ console.log(
 )
 
 // level 8 if else and else if
+console.log('----------- Level 8 & 9 ----------------')
 var one = 1
 var two = 2
 var three = 3
@@ -99,6 +108,7 @@ function ifNumber (num1, num2, num3) {
 } 
 
 // level 10 ternary
+console.log('----------- Level 10 ----------------')
 ifNumber(one, two, three)
 
 function ifSmaller (num1, num2, num3) {
@@ -108,6 +118,7 @@ function ifSmaller (num1, num2, num3) {
 ifSmaller (one, two, three)
 
 // level 11 & 12 multiple conditions & arguments
+console.log('----------- Level 11 & 12 ----------------')
 var candyPrice = 10000
 var clothPrice = 200000
 var money = 300000
@@ -126,6 +137,7 @@ function buySomething (price1, price2, money) {
 buySomething(candyPrice, clothPrice, money)
 
 // level 14 15 16, operator in function
+console.log('----------- Level 14, 15, 16 ----------------')
 
 let four = 4
 let five = 5
@@ -143,6 +155,7 @@ divide(one, two, three, four, five)
 modulo(one, two, three, four, five)
 
 // level 17 function
+console.log('----------- Level 17 ----------------')
 
 function calculateSquareArea(num1) { console.log(num1 * num1) }
 function calculateSquarePerimeter(num1) { console.log(4 * num1) }
@@ -247,27 +260,29 @@ function timeCalculator (date) {
 timeCalculator(date)
 
 // level 24 Adress Book
+console.log('----------- Level 24 Adress Book ----------------')
 
 name = prompt('input your name')
 people = ['patrick', 'sandy', 'squidward']
 
 if (name != null) {
     people.push(name)
-    people.forEach(
-        element => {
-            console.log(element)
-        }
-    )
 }
+
+console.log(`people list : ${people}`)
 
 search = prompt('search name')
 
 result = people.filter(
     person => person === search
 )
+
 result.forEach(
     element => {
-        console.log(element)
+        console.log('search result : '+element)
     }
 )
 
+if (result != search) {
+    console.log('search result not found')
+}
