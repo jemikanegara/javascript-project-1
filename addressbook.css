@@ -21,7 +21,7 @@ h1 {
     margin-bottom: 15px;
 }
 .input {
-    margin: 0 auto;
+    margin: 10px auto;
     width: 300px;
 }
 
@@ -35,3 +35,24 @@ h1 {
     padding: 10px;
 }
 
+.output {
+    width: 800px;
+    margin: 0 auto;
+}
+.output thead{
+    font-weight: bold;
+}
+.output td{
+    font-size: 16px;
+    padding: 10px;
+}
+
+.output td button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.delete {
+    background: red;
+    color: white;
+}
