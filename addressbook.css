@@ -15,6 +15,18 @@ h1 {
     margin: 15px;
 }
 
+header{
+    width: 1140px;
+}
+.search-bar {
+    width: 300px;
+    margin: 10px auto;
+}
+.search {
+    width: 300px;
+    margin: 10px auto;
+}
+
 .desc {
     text-align: center;
     font-size: 22px;

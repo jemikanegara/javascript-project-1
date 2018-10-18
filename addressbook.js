@@ -32,10 +32,12 @@ phoneInput = document.getElementById('phoneInput')
 submitButton = document.querySelector("input[type='submit']")
 error = document.getElementById('error')
 table = document.getElementById('book')
+searchInput = document.getElementById('search')
 
 
 // Event Listener
 submitButton.addEventListener('click', register) // add data & show the output
+searchInput.addEventListener('keyup', searching)
 
 
 // Function
@@ -98,15 +100,17 @@ output () // call the output for the initial page load
 
 function register (event) {
     event.preventDefault()
-    if( 
-        people.filter (
-            element => {
-                return element.name === nameInput.value
-            }
-        )
-    ) {
-        alert('your name already registered')
-    } else
+    // var duplicate = people.filter (
+    //     element => {
+    //         return element.name === nameInput.value
+    //     }
+    // )
+    // console.log(duplicate)
+    // if( 
+    //     duplicate === true
+    // ) {
+    //     alert('your name already registered')
+    // } else
     if (nameInput.value !== "" && addressInput.value !== "" && emailInput.value !== "" && phoneInput.value !== "") {
     table.innerHTML = ""
 
@@ -129,7 +133,7 @@ function deleteData (e) {
         if(confirm('Are you sure want to delete this?')) {
             var tableBody = this.parentNode.parentNode.parentNode
             var deleteRow = this.parentNode.parentNode
-            var nameValue = deleteRow.firstChild.firstChild.wholeText
+            var nameValue = deleteRow.firstChild.firstChild.textContent
             
             people.forEach(
                 (element) => {
@@ -141,8 +145,39 @@ function deleteData (e) {
                     } 
                 }
             )
-
-
             tableBody.removeChild(deleteRow)
         }
+}
+
+function searching (event) {
+    console.log(event.target.value)
+    var searchData = event.target.value
+    people.forEach (
+        (element) => {
+            var trResult = table.children
+            for(i=0; i<trResult.length; i++){
+                var tdResult = trResult[i].children
+                var nameContent = tdResult[0].textContent
+                var addressContent = tdResult[1].textContent
+                var emailContent = tdResult[2].textContent
+                var phoneContent = tdResult[3].textContent
+
+                if(nameContent.indexOf(searchData) !== -1 || addressContent.indexOf(searchData) !== -1 || emailContent.indexOf(searchData) !== -1 || phoneContent.indexOf(searchData) !== -1 ){
+                    trResult[i].style.display = 'table-row'
+                    if(element.name.indexOf(searchData) !== -1 || element.address.indexOf(searchData) !== -1 || element.email.indexOf(searchData) !== -1 || element.phone.indexOf(searchData) !== -1) {
+                        console.log(`search result 'name : ${element.name}, address : ${element.address}. email : ${element.email}, phone : ${element.phone}`)
+                        
+                    }
+                } else {
+                    trResult[i].style.display = 'none'
+                }
+                    // if(trResult.children[j].textContent.indexOf(searchData) != -1){
+                    //     console.log(trResult.children[j].textContent.indexOf(searchData))
+                    // } else {
+                    //     trResult[i].style.display = 'none'
+                    // }
+                
+            }
+        }
+    )
 }
