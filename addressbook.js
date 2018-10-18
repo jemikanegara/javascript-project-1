@@ -174,21 +174,21 @@ function editData (e) {
     
     trEdit.innerHTML = cancelName+cancelAddress+cancelEmail+cancelPhone+cancelEdit+cancelDelete
 
-    editButton = document.querySelectorAll('.edit')
-    
-    editButton.forEach (
-        element => {
-            element.addEventListener('click', editData)
-        }
-    )
+        editButton = document.querySelectorAll('.edit')
+        
+        editButton.forEach (
+            element => {
+                element.addEventListener('click', editData)
+            }
+        )
 
-    deleteButton = document.querySelectorAll('.delete')
+        deleteButton = document.querySelectorAll('.delete')
 
-    deleteButton.forEach(
-        element => {
-        element.addEventListener('click', deleteData)
-        }
-    )
+        deleteButton.forEach(
+            element => {
+            element.addEventListener('click', deleteData)
+            }
+        )
     }
 
     saveEdit = document.querySelectorAll('.saveEdit')
@@ -200,10 +200,38 @@ function editData (e) {
     )
 
     function saveData () {
-        if(nameEdit != "" && addressEdit != "" && emailEdit != "" && phoneEdit != "" ){
-            console.log('good')
+        let trSave = this.parentNode.parentNode.children
+        let nameValue = trSave[0].children[0].value
+        let addressValue = trSave[1].children[0].value
+        let emailValue = trSave[2].children[0].value
+        let phoneValue = trSave[3].children[0].value
+
+        if (nameValue != "" && addressValue != "" && emailValue != "" && phoneValue != ""){
+            saveName = `<td>${nameValue}</td>`
+            saveAddress = `<td>${addressValue}</td>`
+            saveEmail = `<td>${emailValue}</td>`
+            savePhone = `<td>${phoneValue}</td>`
+            saveEdit = `<td><button class="edit">Edit</button></td>`
+            saveDelete = `<td><button class="delete">X</button></td>`
+            trEdit.innerHTML = saveName+saveAddress+saveEmail+savePhone+saveEdit+saveDelete
+
+            editButton = document.querySelectorAll('.edit')
+        
+            editButton.forEach (
+                element => {
+                    element.addEventListener('click', editData)
+                }
+            )
+    
+            deleteButton = document.querySelectorAll('.delete')
+    
+            deleteButton.forEach(
+                element => {
+                element.addEventListener('click', deleteData)
+                }
+            )
         } else {
-            alert('please complete all the edit field')
+            alert('all edit field must be fulfilled')
         }
     }
 }
