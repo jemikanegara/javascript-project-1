@@ -42,7 +42,7 @@ searchInput.addEventListener('keyup', searching)
 
 // Function
 function output () { 
-    people.forEach( function (element)  {
+    people.forEach( function (element, index)  {
     var tr = document.createElement('tr')
 
     var tdName = document.createElement('td')
@@ -84,6 +84,7 @@ function output () {
     tr.appendChild(tdPhone)
     tr.appendChild(tdEdit)
     tr.appendChild(tdDelete)
+    tr.setAttribute(`id`, `${index}`)
 
     table.appendChild(tr)
     })
@@ -140,7 +141,7 @@ function register (event) {
     }
 }
 
-function editData (e) {
+function editData () {
     let trEdit = this.parentNode.parentNode
     
     let nameEdit = trEdit.children[0].textContent
@@ -194,7 +195,7 @@ function editData (e) {
     saveEdit = document.querySelectorAll('.saveEdit')
 
     saveEdit.forEach(
-        element => {
+        (element) => {
             element.addEventListener('click', saveData)
         }
     )
@@ -205,6 +206,12 @@ function editData (e) {
         let addressValue = trSave[1].children[0].value
         let emailValue = trSave[2].children[0].value
         let phoneValue = trSave[3].children[0].value
+        
+        // people[this.parentNode]
+        people[this.parentNode.parentNode.id].name = nameValue
+        people[this.parentNode.parentNode.id].address = addressValue
+        people[this.parentNode.parentNode.id].email = emailValue
+        people[this.parentNode.parentNode.id].phone = phoneValue
 
         if (nameValue != "" && addressValue != "" && emailValue != "" && phoneValue != ""){
             saveName = `<td>${nameValue}</td>`
@@ -281,12 +288,7 @@ function searching (event) {
                 } else {
                     trResult[i].style.display = 'none'
                 }
-                    // if(trResult.children[j].textContent.indexOf(searchData) != -1){
-                    //     console.log(trResult.children[j].textContent.indexOf(searchData))
-                    // } else {
-                    //     trResult[i].style.display = 'none'
-                    // }
-                
+
             }
         }
     )
