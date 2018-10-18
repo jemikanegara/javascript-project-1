@@ -64,6 +64,7 @@ function output () {
     var editBtn = document.createElement('button')
     var editTxt = document.createTextNode('Edit')
     editBtn.appendChild(editTxt)
+    editBtn.className = 'edit'
 
     var deleteBtn = document.createElement('button')
     var deleteTxt = document.createTextNode('X')
@@ -87,6 +88,14 @@ function output () {
     table.appendChild(tr)
     })
 
+    editButton = document.querySelectorAll('.edit')
+    
+    editButton.forEach (
+        element => {
+            element.addEventListener('click', editData)
+        }
+    )
+
     deleteButton = document.querySelectorAll('.delete')
 
     deleteButton.forEach(
@@ -94,6 +103,8 @@ function output () {
         element.addEventListener('click', deleteData)
         }
     )
+
+
 }
 
 output () // call the output for the initial page load
@@ -128,6 +139,77 @@ function register (event) {
     alert('please complete all the field') // alert if there is any input unfulfilled
     }
 }
+
+function editData (e) {
+    let trEdit = this.parentNode.parentNode
+    
+    let nameEdit = trEdit.children[0].textContent
+    let addressEdit = trEdit.children[1].textContent
+    let emailEdit = trEdit.children[2].textContent
+    let phoneEdit = trEdit.children[3].textContent
+    
+    editName = `<td><input type="text" class="editInput" placeholder="${nameEdit}"></td>`
+    editAddress = `<td><input type="text" class="editInput" placeholder="${addressEdit}"></td>`
+    editEmail = `<td><input type="text" class="editInput" placeholder="${emailEdit}"></td>`
+    editPhone = `<td><input type="text" class="editInput" placeholder="${phoneEdit}"></td>`
+    editSave = `<td><button class="saveEdit">SAVE</button></td>`
+    editCancel = `<td><button class="cancelEdit">CANCEL</button></td>`
+    trEdit.innerHTML = editName+editAddress+editEmail+editPhone+editSave+editCancel
+
+    cancelEdit = document.querySelectorAll('.cancelEdit')
+    cancelEdit.forEach(
+        element => {
+            element.addEventListener('click', cancelData)
+        }
+    )
+
+    function cancelData () {
+
+    cancelName = `<td>${nameEdit}</td>`
+    cancelAddress = `<td>${addressEdit}</td>`
+    cancelEmail = `<td>${emailEdit}</td>`
+    cancelPhone = `<td>${phoneEdit}</td>`
+    cancelEdit = `<td><button class="edit">Edit</button></td>`
+    cancelDelete = `<td><button class="delete">X</button></td>`
+    
+    trEdit.innerHTML = cancelName+cancelAddress+cancelEmail+cancelPhone+cancelEdit+cancelDelete
+
+    editButton = document.querySelectorAll('.edit')
+    
+    editButton.forEach (
+        element => {
+            element.addEventListener('click', editData)
+        }
+    )
+
+    deleteButton = document.querySelectorAll('.delete')
+
+    deleteButton.forEach(
+        element => {
+        element.addEventListener('click', deleteData)
+        }
+    )
+    }
+
+    saveEdit = document.querySelectorAll('.saveEdit')
+
+    saveEdit.forEach(
+        element => {
+            element.addEventListener('click', saveData)
+        }
+    )
+
+    function saveData () {
+        if(nameEdit != "" && addressEdit != "" && emailEdit != "" && phoneEdit != "" ){
+            console.log('good')
+        } else {
+            alert('please complete all the edit field')
+        }
+    }
+}
+
+
+
 
 function deleteData (e) {
         if(confirm('Are you sure want to delete this?')) {
